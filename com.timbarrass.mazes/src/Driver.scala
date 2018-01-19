@@ -10,21 +10,36 @@ case class Cell(xIn:Int, yIn: Int) {
 }
 
 object Driver extends App {
-  val width = 20
-  val height = 20
-  val scale = 2
+  val width = 4
+  val height = 4
+  val scale = 1
 
   val m = new PrimsMaze(width, height, scale  )
 
+  display(m)
 
-  for (
-    y <- 0 until ( height * (scale + 1) + 1);
-    x <- 0 until ( width * (scale + 1) + 1);
-    _ = if ( x == 5 ) { println }
-  ) {
-    if(m.finalGrid(x)(y)) { print("o") } else { print(" ") }
+  m.breakALink
+
+  display(m)
+
+
+
+  def display(m: PrimsMaze): Unit = {
+   val f = m.finalGrid
+
+    for (
+      y <- 0 until (height * (scale + 1) + 1);
+      x <- 0 until (width * (scale + 1) + 1);
+      _ = if (x == 5) { println }
+    ) {
+      if (f(x)(y)) {
+        print(1.toChar)
+      } else {
+        print(" ")
+      }
+    }
+    println
   }
-
 }
 
 class PrimsMaze(width:Int, height:Int, scale: Int) {
@@ -33,9 +48,9 @@ class PrimsMaze(width:Int, height:Int, scale: Int) {
 
   val finalMaze = process(randomCell(width, height))
 
-  val finalGrid = transformToFinalGrid(finalMaze)
-
-
+  def finalGrid: Array[Array[Boolean]] = {
+    transformToFinalGrid(finalMaze)
+  }
 
   def fullFinalGrid: Array[Array[Boolean]] = {
     Array.fill[Boolean](width * (scale + 1) + 1, height * (scale + 1) + 1) { true } // true => wall
@@ -43,6 +58,18 @@ class PrimsMaze(width:Int, height:Int, scale: Int) {
 
   private def emptyTree: Array[Array[mutable.Set[Cell]]] = {
     Array.fill[mutable.Set[Cell]](width, height) { Set() }
+  }
+
+  def breakALink(): Unit = {
+    val r = Random
+    val x = r.nextInt(width - 1)
+    val y = r.nextInt(height - 1)
+    println((x,y))
+    finalMaze(x)(y).foreach(c => println((c.x,c.y)))
+    val targetCell = finalMaze(x)(y).head // need to sort out this random set member choosing
+    println(x + " " + y + " " + targetCell.x + " " + targetCell.y)
+    finalMaze(x)(y).remove(targetCell)
+    finalMaze(targetCell.x)(targetCell.y).remove(new Cell(x, y))
   }
 
   def transformToFinalGrid(finalMaze: Array[Array[mutable.Set[Cell]]]): Array[Array[Boolean]] = {
@@ -122,7 +149,9 @@ class PrimsMaze(width:Int, height:Int, scale: Int) {
       // Prim's algo proper would choose single closest node. In this modified algo
       // the closest nodes are the 4 cell neighbours, all 1 unit away -- so we
       // just randomly choose one unconsidered neighbour
-      tree(c.x)(c.y) += neighbours(c.x)(c.y).filter(n => { white(n.x)(n.y) }).head
+      val n = neighbours(c.x)(c.y).filter(n => { white(n.x)(n.y) }).head
+      tree(c.x)(c.y) += n
+      tree(n.x)(n.y) += c
 
       process(grey union neighbours(c.x)(c.y).filterNot( n => white(n.x)(n.y) ), white, tree)
     }
