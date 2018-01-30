@@ -1,6 +1,7 @@
 import org.scalatest.{FlatSpec, MustMatchers}
 
 import scala.collection.mutable
+import scala.collection.mutable.Set
 import scala.util.Random
 
 class MazeTest extends FlatSpec with MustMatchers {
@@ -48,23 +49,26 @@ class MazeTest extends FlatSpec with MustMatchers {
   // now I can't tell that it's actually created a maze ...
 
   "initNeighbours" must "return 4 neighbours for an internal cell" in {
-    val n = new Neighbours(6, 6)
-    n(3, 4) must contain(new Cell(3,5))
-    n(3, 4) must contain(new Cell(2,4))
-    n(3, 4) must contain(new Cell(4,4))
-    n(3, 4) must contain(new Cell(3,3))
+    val n = Neighbours(6, 6)
+    n(3, 4) must contain(Cell(3, 5))
+    n(3, 4) must contain(Cell(2, 4))
+    n(3, 4) must contain(Cell(4, 4))
+    n(3, 4) must contain(Cell(3, 3))
   }
 
   it must "return 3 neighbours for a boundary cell" in {
-    val n = new Neighbours(6, 6)
-    n(0, 3) must contain(new Cell(0,2))
-    n(0, 3) must contain(new Cell(0,4))
-    n(0, 3) must contain(new Cell(1,3))
-    n(0, 3) must not contain(new Cell(-1,3))
+    val n = Neighbours(6, 6)
+    n(0, 3) must contain(Cell(0, 2))
+    n(0, 3) must contain(Cell(0, 4))
+    n(0, 3) must contain(Cell(1, 3))
+    n(0, 3) must not contain(Cell(-1, 3))
   }
 
+
+
+  // Generate a square-cell maze of specified size
   def generateMaze(width:Int, height:Int): Maze = {
-    val neighbours = new Neighbours(width, height)
+    val neighbours = Neighbours(width, height)
 
     val c = randomCell(width, height)
 
@@ -74,10 +78,11 @@ class MazeTest extends FlatSpec with MustMatchers {
       emptyTree(width, height),
       neighbours)
 
-    new Maze(routes)
+    Maze(routes)
   }
 
-  private def process(grey: mutable.Set[Cell],
+  // Use a modified Prim's algorithm to generate a maze with a route to every cell
+  private def process(grey: Vector[Cell],
                       white: Array[Array[Boolean]],
                       tree: Array[Array[mutable.Set[Cell]]],
                       neighbours: Neighbours): Array[Array[mutable.Set[Cell]]] =
@@ -85,20 +90,19 @@ class MazeTest extends FlatSpec with MustMatchers {
     if (grey.isEmpty) {
       tree
     } else {
-      Random.shuffle(grey) // ha so efficient
-      val c = grey.head // random?
-      grey -= c
+      val c = grey(r.nextInt(grey.size - 1))
 
       white(c.x)(c.y) = true
 
       // Prim's algo proper would choose single closest node. In this modified algo
       // the closest nodes are the 4 cell neighbours, all 1 unit away -- so we
       // just randomly choose one unconsidered neighbour
-      val n = neighbours(c.x, c.y).filter(n => { white(n.x)(n.y) }).head
+      val ns = neighbours(c.x, c.y).filter(n => { white(n.x)(n.y) })
+      val n = if ( ns.size > 1 ) ns(r.nextInt(ns.size - 1)) else ns(0)
       tree(c.x)(c.y) += n
       tree(n.x)(n.y) += c
 
-      process(grey union neighbours(c.x, c.y).filterNot( n => white(n.x)(n.y) ), white, tree, neighbours)
+      process(grey.filter(t => {t != c}) union neighbours(c.x, c.y).filterNot( n => white(n.x)(n.y) ), white, tree, neighbours)
     }
   }
 
@@ -118,16 +122,8 @@ class MazeTest extends FlatSpec with MustMatchers {
     white
   }
 
-  private def initGreyListNeighbours(c: Cell, neighbours: Neighbours): mutable.Set[Cell] = {
-    val grey = mutable.Set[Cell]()
-
-    for (n <- neighbours(c.x, c.y)) {
-      if (!grey.contains(n)) {
-        grey += n
-      }
-    }
-
-    grey
+  private def initGreyListNeighbours(c: Cell, neighbours: Neighbours): Vector[Cell] = {
+    neighbours(c.x, c.y)
   }
 
 
@@ -140,21 +136,21 @@ class MazeTest extends FlatSpec with MustMatchers {
   case class Cell(x:Int, y:Int) {  }
 
   case class Neighbours(width:Int, height:Int) {
-    private val neighbours = Array.fill[mutable.Set[Cell]](width, height) {
-      mutable.Set()
+    private val neighbours = Array.fill[Vector[Cell]](width, height) {
+      Vector[Cell]()
     }
 
     for (
       x <- 0 until width;
       y <- 0 until height
     ) {
-      if (x > 0) neighbours(x)(y) += Cell(x - 1, y)
-      if (x < width - 1) neighbours(x)(y) += Cell(x + 1, y)
-      if (y > 0) neighbours(x)(y) += Cell(x, y - 1)
-      if (y < height - 1) neighbours(x)(y) += Cell(x, y + 1)
+      if (x > 0) neighbours(x)(y) = neighbours(x)(y) :+ Cell(x - 1, y)
+      if (x < width - 1) neighbours(x)(y) = neighbours(x)(y) :+ Cell(x + 1, y)
+      if (y > 0) neighbours(x)(y) = neighbours(x)(y) :+ Cell(x, y - 1)
+      if (y < height - 1) neighbours(x)(y) = neighbours(x)(y) :+ Cell(x, y + 1)
     }
 
-    def apply(x:Int, y:Int): mutable.Set[Cell] = {
+    def apply(x:Int, y:Int): Vector[Cell] = {
       neighbours(x)(y)
     }
   }

@@ -31,8 +31,8 @@
       <file leaf-file-name="Driver.scala" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com.timbarrass.mazes/src/Driver.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+            <state relative-caret-position="219">
+              <caret line="164" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
               <folding>
                 <element signature="e#30#61#0" expanded="true" />
               </folding>
@@ -43,25 +43,23 @@
       <file leaf-file-name="Tests.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/com.timbarrass.mazes/test/Tests.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="411">
+              <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
-                <element signature="e#240#284#0" expanded="false" />
-                <element signature="e#347#436#0" expanded="false" />
-                <element signature="e#508#582#0" expanded="false" />
-                <element signature="e#640#787#0" expanded="false" />
-                <element signature="e#858#1075#0" expanded="false" />
-                <element signature="e#1208#1406#0" expanded="false" />
-                <element signature="e#1463#1666#0" expanded="false" />
-                <element signature="e#1670#1996#0" expanded="false" />
-                <element signature="e#2000#2880#0" expanded="false" />
-                <element signature="e#2884#2997#0" expanded="false" />
-                <element signature="e#3001#3155#0" expanded="false" />
-                <element signature="e#3716#4206#1" expanded="false" />
-                <element signature="e#4267#4425#1" expanded="false" />
-                <marker date="1517213635486" expanded="false" signature="3442:3594" ph="{...}" />
+                <element signature="e#383#472#0" expanded="false" />
+                <element signature="e#544#618#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Random.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_91/src.zip!/java/util/Random.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="387" column="0" selection-start-line="387" selection-start-column="0" selection-end-line="387" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -179,10 +177,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Tests.scala" />
-              <option name="myItemType" value="org.jetbrains.plugins.scala.components.ScalaDefsProjectViewProvider$ScalaFileTreeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -583,34 +577,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MazeTest - 2018.01.28 at 14h 58m 45s.xml">
+    <history-entry file="MazeTest - 2018.01.30 at 09h 07m 41s.xml">
       <configuration name="MazeTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="MazeTest - 2018.01.28 at 14h 59m 12s.xml">
+    <history-entry file="MazeTest - 2018.01.30 at 17h 35m 05s.xml">
       <configuration name="MazeTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="MazeTest - 2018.01.28 at 20h 01m 48s.xml">
+    <history-entry file="MazeTest - 2018.01.30 at 17h 35m 45s.xml">
       <configuration name="MazeTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="MazeTest - 2018.01.28 at 20h 19m 40s.xml">
+    <history-entry file="MazeTest - 2018.01.30 at 17h 35m 48s.xml">
       <configuration name="MazeTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="MazeTest - 2018.01.28 at 20h 19m 54s.xml">
+    <history-entry file="MazeTest - 2018.01.30 at 17h 36m 25s.xml">
       <configuration name="MazeTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="MazeTest - 2018.01.28 at 20h 51m 00s.xml">
+    <history-entry file="MazeTest - 2018.01.30 at 17h 37m 27s.xml">
       <configuration name="MazeTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="MazeTest - 2018.01.28 at 20h 51m 27s.xml">
+    <history-entry file="MazeTest - 2018.01.30 at 17h 38m 03s.xml">
       <configuration name="MazeTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="MazeTest - 2018.01.29 at 08h 12m 47s.xml">
+    <history-entry file="MazeTest - 2018.01.30 at 17h 38m 36s.xml">
       <configuration name="MazeTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="MazeTest - 2018.01.29 at 08h 13m 11s.xml">
+    <history-entry file="MazeTest - 2018.01.30 at 17h 42m 47s.xml">
       <configuration name="MazeTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
-    <history-entry file="MazeTest - 2018.01.29 at 08h 14m 10s.xml">
+    <history-entry file="MazeTest - 2018.01.30 at 17h 47m 48s.xml">
       <configuration name="MazeTest" configurationId="ScalaTestRunConfiguration" />
     </history-entry>
   </component>
@@ -627,7 +621,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33260155" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33260155" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -636,7 +630,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39933258" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42919868" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -658,7 +652,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -773,34 +767,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/com.timbarrass.mazes/src/Driver.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="32" column="11" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+        <state relative-caret-position="219">
+          <caret line="164" column="0" selection-start-line="127" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding>
             <element signature="e#30#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_91/src.zip!/java/util/Random.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="387" column="0" selection-start-line="387" selection-start-column="0" selection-end-line="387" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/com.timbarrass.mazes/test/Tests.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="411">
+          <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
-            <element signature="e#240#284#0" expanded="false" />
-            <element signature="e#347#436#0" expanded="false" />
-            <element signature="e#508#582#0" expanded="false" />
-            <element signature="e#640#787#0" expanded="false" />
-            <element signature="e#858#1075#0" expanded="false" />
-            <element signature="e#1208#1406#0" expanded="false" />
-            <element signature="e#1463#1666#0" expanded="false" />
-            <element signature="e#1670#1996#0" expanded="false" />
-            <element signature="e#2000#2880#0" expanded="false" />
-            <element signature="e#2884#2997#0" expanded="false" />
-            <element signature="e#3001#3155#0" expanded="false" />
-            <element signature="e#3716#4206#1" expanded="false" />
-            <element signature="e#4267#4425#1" expanded="false" />
-            <marker date="1517213635486" expanded="false" signature="3442:3594" ph="{...}" />
+            <element signature="e#383#472#0" expanded="false" />
+            <element signature="e#544#618#0" expanded="false" />
           </folding>
         </state>
       </provider>
