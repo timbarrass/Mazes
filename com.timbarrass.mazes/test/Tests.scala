@@ -8,22 +8,22 @@ class MazeTest extends FlatSpec with MustMatchers {
   behavior of "Maze"
 
   "generateMaze" must "return a new Maze when requested" in {
-    MazeGenerator.generateMaze(3, 4) mustBe an[Maze]
+    Maze.generateMaze(3, 4) mustBe an[Maze]
   }
 
   it must "return a Maze with specified width and height" in {
-    val m = MazeGenerator.generateMaze(3, 4)
+    val m = Maze.generateMaze(3, 4)
     m.width must equal(3)
     m.height must equal(4)
   }
 
   "maze" should "return a set of neighbour cells for a given cell" in {
-    val m = MazeGenerator.generateMaze(4, 4)
+    val m = Maze.generateMaze(4, 4)
     m(2, 3) mustBe an[mutable.Set[_]]
   }
 
   it must "have at least one route out of each cell" in {
-    val m = MazeGenerator.generateMaze(4, 4)
+    val m = Maze.generateMaze(4, 4)
     for (
       y <- 0 until m.height;
       x <- 0 until m.width
@@ -33,7 +33,7 @@ class MazeTest extends FlatSpec with MustMatchers {
   }
 
   it must "have a matching route in for each route out of a cell" in {
-    val m = MazeGenerator.generateMaze(4, 4)
+    val m = Maze.generateMaze(4, 4)
     for (
       y <- 0 until m.height;
       x <- 0 until m.width
@@ -68,7 +68,7 @@ class MazeTest extends FlatSpec with MustMatchers {
 
 }
 
-object MazeGenerator {
+object Maze {
   // Generate a square-cell maze of specified size
   def generateMaze(width:Int, height:Int): Maze = {
     val neighbours = Neighbours(width, height)
