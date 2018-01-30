@@ -3,24 +3,69 @@ package com.timbarrass.mazes
 import scala.collection.mutable
 import scala.collection.mutable.Set
 import scala.util.Random
+import org.scalatest
 
-case class Cell(xIn:Int, yIn: Int) {
-  val x = xIn
-  val y = yIn
-}
+/*
+Maze
+Generate a random maze - do I need the final maze expressed as routes?
+Transform that maze to a final block grid, handling corridor width
+How big will transformed maze be?
+Break a link (relationship) (break a random link -- need to get handed a maze object we can modify or modify own state)
+Break a link (final block grid)
+Make a link (relationship)
+Make a link (final block grid)
+Flood fill
+Random adjust - break, identify and make links
+Let me know if the maze changes
+
+Options
+Toolkit - provide operations and define objects to be passed around but don't keep a record of what's created
+Alt - all ops result in a final block grid rather than
+
+Route Generator
+Flood Filler
+Cell
+Routes (finalMaze atm - do we need to expose this?
+Transformed (finalGrid atm - typically what client is using)
+ */
+
 
 object Driver extends App {
-  val width = 4
-  val height = 4
+
+  val width = 10
+  val height = 10
   val scale = 1
 
   val m = new PrimsMaze(width, height, scale  )
 
   display(m)
 
-  m.breakALink
+  m.breakALink()
 
   display(m)
+
+  val finalFlooded = m.floodFill
+
+  displayFlooded(m, finalFlooded._1)
+
+  println("size of black: " + finalFlooded._2.size)
+
+  def displayFlooded(m: PrimsMaze, flood:Array[Array[Int]]): Unit = {
+    val f = m.finalGrid
+
+    for (
+      y <- 0 until (height * (scale + 1) + 1);
+      x <- 0 until (width * (scale + 1) + 1);
+      _ = if (x == 5) { println }
+    ) {
+      if (f(x)(y)) {
+        print(1.toChar)
+      } else {
+        print(flood(m.reverseTransform(x, scale))(m.reverseTransform(y, scale)))
+      }
+    }
+    println
+  }
 
 
 
@@ -41,6 +86,9 @@ object Driver extends App {
     println
   }
 }
+
+
+
 
 class PrimsMaze(width:Int, height:Int, scale: Int) {
   private val r = new Random
@@ -70,6 +118,49 @@ class PrimsMaze(width:Int, height:Int, scale: Int) {
     println(x + " " + y + " " + targetCell.x + " " + targetCell.y)
     finalMaze(x)(y).remove(targetCell)
     finalMaze(targetCell.x)(targetCell.y).remove(new Cell(x, y))
+  }
+
+  def floodFill: (Array[Array[Int]], Set[Cell]) = {
+    val setId = 1
+    val empty = Array.fill[Int](width, height) {
+      0
+    }
+    val black = Set[Cell]()
+    val grey = Set[Cell]()
+
+    for {
+      y <- 0 until height;
+      x <- 0 until width
+    } {
+      black += new Cell(x, y)
+    }
+
+    val r = Random
+
+    val c = black.head
+    black -= c
+    grey += c
+    val finalFlooded = processFloodFill(grey, black, finalMaze, setId, empty)
+
+    finalFlooded
+  }
+
+  def processFloodFill(grey: Set[Cell], black: Set[Cell], tree:Array[Array[Set[Cell]]], setId: Int, flooded: Array[Array[Int]]): (Array[Array[Int]], Set[Cell]) = {
+    if(grey.size == 0) {
+      (flooded, black)
+    } else {
+      val c = grey.head // random?
+      grey -= c
+
+      flooded(c.x)(c.y) = setId
+
+      processFloodFill(grey union tree(c.x)(c.y) intersect black, black diff tree(c.x)(c.y), tree, setId, flooded)
+    }
+  }
+
+  // final grid coordinates to final maze
+  def reverseTransform(x:Int, scale:Int): Int = {
+    (x - 1) / (scale + 1)
   }
 
   def transformToFinalGrid(finalMaze: Array[Array[mutable.Set[Cell]]]): Array[Array[Boolean]] = {
