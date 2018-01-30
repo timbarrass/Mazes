@@ -1,7 +1,6 @@
 import org.scalatest.{FlatSpec, MustMatchers}
 
 import scala.collection.mutable
-import scala.collection.mutable.Set
 import scala.util.Random
 
 class MazeTest extends FlatSpec with MustMatchers {
@@ -9,22 +8,22 @@ class MazeTest extends FlatSpec with MustMatchers {
   behavior of "Maze"
 
   "generateMaze" must "return a new Maze when requested" in {
-    generateMaze(3, 4) mustBe an[Maze]
+    MazeGenerator.generateMaze(3, 4) mustBe an[Maze]
   }
 
   it must "return a Maze with specified width and height" in {
-    val m = generateMaze(3, 4)
+    val m = MazeGenerator.generateMaze(3, 4)
     m.width must equal(3)
     m.height must equal(4)
   }
 
   "maze" should "return a set of neighbour cells for a given cell" in {
-    val m = generateMaze(4, 4)
+    val m = MazeGenerator.generateMaze(4, 4)
     m(2, 3) mustBe an[mutable.Set[_]]
   }
 
   it must "have at least one route out of each cell" in {
-    val m = generateMaze(4, 4)
+    val m = MazeGenerator.generateMaze(4, 4)
     for (
       y <- 0 until m.height;
       x <- 0 until m.width
@@ -34,7 +33,7 @@ class MazeTest extends FlatSpec with MustMatchers {
   }
 
   it must "have a matching route in for each route out of a cell" in {
-    val m = generateMaze(4, 4)
+    val m = MazeGenerator.generateMaze(4, 4)
     for (
       y <- 0 until m.height;
       x <- 0 until m.width
@@ -66,6 +65,10 @@ class MazeTest extends FlatSpec with MustMatchers {
 
 
 
+
+}
+
+object MazeGenerator {
   // Generate a square-cell maze of specified size
   def generateMaze(width:Int, height:Int): Maze = {
     val neighbours = Neighbours(width, height)
@@ -126,41 +129,36 @@ class MazeTest extends FlatSpec with MustMatchers {
     neighbours(c.x, c.y)
   }
 
-
-
-
-
-
   private val r = new Random
+}
 
-  case class Cell(x:Int, y:Int) {  }
+case class Cell(x:Int, y:Int) {  }
 
-  case class Neighbours(width:Int, height:Int) {
-    private val neighbours = Array.fill[Vector[Cell]](width, height) {
-      Vector[Cell]()
-    }
-
-    for (
-      x <- 0 until width;
-      y <- 0 until height
-    ) {
-      if (x > 0) neighbours(x)(y) = neighbours(x)(y) :+ Cell(x - 1, y)
-      if (x < width - 1) neighbours(x)(y) = neighbours(x)(y) :+ Cell(x + 1, y)
-      if (y > 0) neighbours(x)(y) = neighbours(x)(y) :+ Cell(x, y - 1)
-      if (y < height - 1) neighbours(x)(y) = neighbours(x)(y) :+ Cell(x, y + 1)
-    }
-
-    def apply(x:Int, y:Int): Vector[Cell] = {
-      neighbours(x)(y)
-    }
+case class Neighbours(width:Int, height:Int) {
+  private val neighbours = Array.fill[Vector[Cell]](width, height) {
+    Vector[Cell]()
   }
 
-  case class Maze(routes: Array[Array[mutable.Set[Cell]]]) {
-    val width: Int = routes.length
-    val height: Int  = routes(0).length
+  for (
+    x <- 0 until width;
+    y <- 0 until height
+  ) {
+    if (x > 0) neighbours(x)(y) = neighbours(x)(y) :+ Cell(x - 1, y)
+    if (x < width - 1) neighbours(x)(y) = neighbours(x)(y) :+ Cell(x + 1, y)
+    if (y > 0) neighbours(x)(y) = neighbours(x)(y) :+ Cell(x, y - 1)
+    if (y < height - 1) neighbours(x)(y) = neighbours(x)(y) :+ Cell(x, y + 1)
+  }
 
-    def apply(x: Int, y:Int): mutable.Set[Cell] = {
-      routes(x)(y)
-    }
+  def apply(x:Int, y:Int): Vector[Cell] = {
+    neighbours(x)(y)
+  }
+}
+
+case class Maze(routes: Array[Array[mutable.Set[Cell]]]) {
+  val width: Int = routes.length
+  val height: Int  = routes(0).length
+
+  def apply(x: Int, y:Int): mutable.Set[Cell] = {
+    routes(x)(y)
   }
 }

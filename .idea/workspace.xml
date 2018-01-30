@@ -43,12 +43,18 @@
       <file leaf-file-name="Tests.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/com.timbarrass.mazes/test/Tests.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+            <state relative-caret-position="396">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
-                <element signature="e#383#472#0" expanded="false" />
-                <element signature="e#544#618#0" expanded="false" />
+                <element signature="e#1278#1460#0" expanded="false" />
+                <element signature="e#1737#2106#0" expanded="false" />
+                <element signature="e#2110#3105#0" expanded="false" />
+                <element signature="e#3109#3222#0" expanded="false" />
+                <element signature="e#3226#3380#0" expanded="false" />
+                <element signature="e#3384#3574#0" expanded="false" />
+                <element signature="e#3578#3692#0" expanded="false" />
+                <element signature="e#3807#4332#1" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -652,7 +658,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="25" />
+      <option name="time" value="26" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -785,12 +791,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/com.timbarrass.mazes/test/Tests.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+        <state relative-caret-position="396">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
-            <element signature="e#383#472#0" expanded="false" />
-            <element signature="e#544#618#0" expanded="false" />
+            <element signature="e#1278#1460#0" expanded="false" />
+            <element signature="e#1737#2106#0" expanded="false" />
+            <element signature="e#2110#3105#0" expanded="false" />
+            <element signature="e#3109#3222#0" expanded="false" />
+            <element signature="e#3226#3380#0" expanded="false" />
+            <element signature="e#3384#3574#0" expanded="false" />
+            <element signature="e#3578#3692#0" expanded="false" />
+            <element signature="e#3807#4332#1" expanded="false" />
           </folding>
         </state>
       </provider>
